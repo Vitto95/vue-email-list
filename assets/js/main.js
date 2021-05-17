@@ -5,6 +5,7 @@ const app = new Vue({
   el: "#app",
   data: {
     emails: [],
+    isEmailsFull: false,
   },
   mounted() {
     for (let i = 0; i < 10; i++) {
@@ -13,12 +14,16 @@ const app = new Vue({
         .then((resp) => {
           console.log("resp:", resp);
           this.emails.push(resp.data.response);
+          console.log("emails in fase di push: ", this.emails);
+          if (this.emails.length === 10) {
+            this.isEmailsFull = true;
+            console.log("Array di email: ", this.emails);
+          }
         })
         .catch((err) => {
           console.log("err: ", err);
         });
     }
-    console.log("Array di email: ", this.emails);
   },
   methods: {},
 });

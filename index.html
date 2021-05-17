@@ -8,8 +8,8 @@
   </head>
   <body>
     <div id="app">
-      <div v-for="email in emails" v-if="emails.length === 10">{{email}}</div>
-      <div v-if="emails.length < 10">Loading...</div>
+      <div v-for="email in emails" v-if="isEmailsFull">{{email}}</div>
+      <div v-if="!isEmailsFull">Loading...</div>
     </div>
 
     <!-- axios library -->
